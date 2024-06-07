@@ -35,7 +35,7 @@ on:
     types: [opened, reopened, synchronize, closed]
 env:
   DB_NAME: '' # TODO: Fill in your repo's database name
-  DB_SERVER_NAME: 'localhost'
+  DB_SERVER_NAME: '127.0.0.1'
   DB_SERVER_PORT: '1433'
   DEFAULT_BRANCH: 'main' # TODO: verify default branch name
   GITHUB_PACKAGE_URL: 'https://nuget.pkg.github.com' # TODO: This can be removed if your database doesn't have any dependency objects stored in GitHub Packages
@@ -110,12 +110,12 @@ jobs:
           path-to-lint-config: ./.tsqllintrc # TODO: Update this with the path to your project's .tsllintrc file
 
   build-database:
-    runs-on: im-linux
+    runs-on: im-windows-sql-server
     needs: [set-vars, lint-migration-files] # TODO: Remove any jobs you deleted above
     if: ${{ needs.set-vars.outputs.should-skip-remaining-workflow-jobs == 'false' }} # TODO: Remove this if there is no snapshot commit that should cause this step to be skipped.
 
     env:
-      SQL_SERVER_PASSWORD: 'StrongPassword!1'
+      SQL_SERVER_PASSWORD: ${{ secrets.ACTIONS_RUNNER_MSSQL_SA_PWD }}
 
     services:
       sqlserver:
@@ -130,7 +130,7 @@ jobs:
       - name: Install Flyway
         uses: im-open/setup-flyway@v1.1
         with:
-          version: 7.2.0 # This version works with the current version of build-database-ci-action. Newer versions might, but they should be tested.
+          version: 9.17.0 # This version works with the current version of build-database-ci-action. Newer versions might, but they should be tested.
 
       - name: Build Database
         uses: im-open/build-database-ci-action@v3.3
@@ -149,6 +149,7 @@ jobs:
           seed-data: true
           seed-data-files-path: '' # TODO: Add the path to the directory with your seed data files
           use-integrated-security: false
+          trust-server-certificate: true
           db-username: 'sa' # The default system administrator account that comes with SQL Server. This is the only account set up in our self hosted Action Runners' SQL Server instances.
           db-password: ${{ env.SQL_SERVER_PASSWORD }}
 
