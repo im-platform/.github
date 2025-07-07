@@ -182,7 +182,7 @@ jobs:
           --filter "${{ inputs.test-filter }}"
     
       # Uncomment the following steps and customize as needed to run tests specifically within the QualityPractices_Automation framework.
-      # For details on QualityPractices_Automation, please visit: https://kb.extendhealth.com/pages/viewpage.action?pageId=955809040
+      # for details on qualitypractices_automation, please visit: https://im-kb.internal.towerswatson/pages/viewpage.action?pageid=955809040
       # This configuration supports customization through environment variables such as Browser, BaseUrl, and others.
 
       # - name: Run Selenium Tests (QualityPractices_Automation) # Executes Selenium C# tests using QualityPractices_Automation framework

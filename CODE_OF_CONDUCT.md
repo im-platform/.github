@@ -6,7 +6,7 @@ In the interest of fostering an open and welcoming environment, we as contributo
 
 ## Our Standards
 
-We adhere to the [service line's SDLC Policy](https://kb.extendhealth.com/x/3oMnEQ) and commit to the WTW [Code of Conduct](https://wtwonline.sharepoint.com/sites/Policies/SitePages/Code-of-Conduct.aspx) and [Values](https://wtwonline.sharepoint.com/sites/Global/SitePages/Aboutus_Values.aspx).
+we adhere to the [service line's sdlc policy](https://im-kb.internal.towerswatson/x/3omneq) and commit to the wtw [code of conduct](https://wtwonline.sharepoint.com/sites/policies/sitepages/code-of-conduct.aspx) and [values](https://wtwonline.sharepoint.com/sites/global/sitepages/aboutus_values.aspx).
 
 Examples of behavior that contributes to creating a positive environment include:         
 
