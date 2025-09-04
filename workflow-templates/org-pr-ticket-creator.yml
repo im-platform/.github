@@ -57,5 +57,5 @@ jobs:
         pr_title: "${{ github.event.pull_request.title }}"
         # This value will be used to link the Pull Request to the Jira ticket 
         pr_url: "${{ github.event.pull_request.html_url }}"
-        #This is an org-level secret. If the ticket is created unsuccessfully, an email will be sent to the IMBA Pipeline team.
+        # This is an org-level secret. If the ticket is created unsuccessfully, an email will be sent to the IMBA Pipeline team.
         sendgrid_key: "${{ secrets.SENDGRID_KEY }}"
