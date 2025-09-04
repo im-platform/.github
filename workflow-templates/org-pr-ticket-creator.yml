@@ -1,4 +1,4 @@
-# Workflow Code: HackCostume_v1    DO NOT REMOVE
+# Workflow Code: HackCostume_v2    DO NOT REMOVE
 # Purpose:
 #     This workflows is used to create team-specific jira tickets when a Pull Request is opened in its repository
 #
@@ -32,16 +32,30 @@ jobs:
     - name: Call and Run PR Ticket Creator
       uses: im-platform/pr-ticket-creator/.github/actions/pr-ticket-creator@main
       with:
-        git_api_token: ${{ secrets.GITHUB_TOKEN }}
+        # This is the default GITHUB_TOKEN that is created when an action runs
+        git_api_token: ${{ secrets.GITHUB_TOKEN }} 
+        # This should be the Jira team name; like "Infrastructure Purple Team" or "Infrastructure Blue Team"
+        # Possible values are the keys here: https://github.com/im-platform/concourse-lib/blob/main/python/jira.py#L19 
         jira_assigned_team: "<PLATFORM_JIRA_TEAM>"
-        jira_components: ""
+        # should be comma separated values; these values will be converted to labels in the Jira ticket
+        jira_components: "pull-request-created"
+        # This is an org-level secret. This password is used for Jira ticket creatoin
         jira_password: "${{ secrets.JIRA_PASSWORD_TICKET_CREATOR }}"
+        # This is an org-level secret. This is the URL for Jira
         jira_url: "${{ secrets.JIRA_URL }}"
+        # This is an org-level variable. This is the Jira username for ticket creation
         jira_username: "${{ vars.JIRA_USERNAME_TICKET_CREATOR }}"
+        # This is an org-level secret. This allows comment to be added to the Pull Request
         pipeline_bot_pat: "${{ secrets.PIPELINE_BOT_PAT }}"
+        # This value will be used to create the Jira ticket
         pr_author: "${{ github.event.pull_request.user.login }}"
+        # This value will be used to list the Pull Request number
         pr_number: "${{ github.event.pull_request.number }}"
+        # Replace with the name of the organization and then the repository name
         pr_repo: "<ORG_NAME>/<REPO_NAME>"
+        # This value will be used to create the Jira ticket title
         pr_title: "${{ github.event.pull_request.title }}"
+        # This value will be used to link the Pull Request to the Jira ticket 
         pr_url: "${{ github.event.pull_request.html_url }}"
+        #This is an org-level secret. If the ticket is created unsuccessfully, an email will be sent to the IMBA Pipeline team.
         sendgrid_key: "${{ secrets.SENDGRID_KEY }}"
