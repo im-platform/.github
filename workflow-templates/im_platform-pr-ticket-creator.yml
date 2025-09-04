@@ -1,4 +1,12 @@
 # Workflow Code: HackCostume_v1    DO NOT REMOVE
+# Purpose:
+#     This workflows is used to create team-specific jira tickets when a Pull Request is opened in its repository
+#
+# Frequency:
+#    - This workflow should only be used once per repository
+#
+# Projects to use this Template with:
+#    - Any repository where the team would like a Jira ticket to be created when a Pull Request is created in it
 
 name: Create Ticket when PR is created in <REPO_NAME> Repository
 
