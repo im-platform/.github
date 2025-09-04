@@ -1,0 +1,33 @@
+# Workflow Code: HackCostume_v1    DO NOT REMOVE
+
+name: Create Ticket when PR is created in <REPO_NAME> Repository
+
+permissions:
+  contents: read
+  pull-requests: read
+
+on:
+  pull_request:
+    types: [opened, reopened, ready_for_review]
+    branches: [main]
+
+jobs:
+  Create-Ticket-For-Pr:
+    runs-on: im-linux
+    steps:
+    - name: Call and Run PR Ticket Creator
+      uses: im-platform/pr-ticket-creator/.github/actions/pr-ticket-creator@main
+      with:
+        git_api_token: ${{ secrets.GITHUB_TOKEN }}
+        jira_assigned_team: "<PLATFORM_TEAM_NAME>"
+        jira_components: ""
+        jira_password: "${{ secrets.JIRA_PASSWORD_TICKET_CREATOR }}"
+        jira_url: "${{ secrets.JIRA_URL }}"
+        jira_username: "${{ vars.JIRA_USERNAME_TICKET_CREATOR }}"
+        pipeline_bot_pat: "${{ secrets.PIPELINE_BOT_PAT }}"
+        pr_author: "${{ github.event.pull_request.user.login }}"
+        pr_number: "${{ github.event.pull_request.number }}"
+        pr_repo: "<ORG_NAME>/<REPO_NAME>"
+        pr_title: "${{ github.event.pull_request.title }}"
+        pr_url: "${{ github.event.pull_request.html_url }}"
+        sendgrid_key: "${{ secrets.SENDGRID_KEY }}"
