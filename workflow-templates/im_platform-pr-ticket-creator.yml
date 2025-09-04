@@ -7,6 +7,12 @@
 #
 # Projects to use this Template with:
 #    - Any repository where the team would like a Jira ticket to be created when a Pull Request is created in it
+#
+# Important:
+#    Before committing changes be sure to replace the values:
+#    - <REPO_NAME>
+#    - <PLATFORM_JIRA_TEAM>
+#    - <ORG_NAME>
 
 name: Create Ticket when PR is created in <REPO_NAME> Repository
 
@@ -27,7 +33,7 @@ jobs:
       uses: im-platform/pr-ticket-creator/.github/actions/pr-ticket-creator@main
       with:
         git_api_token: ${{ secrets.GITHUB_TOKEN }}
-        jira_assigned_team: "<PLATFORM_TEAM_NAME>"
+        jira_assigned_team: "<PLATFORM_JIRA_TEAM>"
         jira_components: ""
         jira_password: "${{ secrets.JIRA_PASSWORD_TICKET_CREATOR }}"
         jira_url: "${{ secrets.JIRA_URL }}"
