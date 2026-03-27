@@ -1,4 +1,8 @@
-# .github
+# Repo Migrated
+
+This repo is migrated.  You can find the new repo in the new organization [wtw-bdoim](https://github.com/wtw-bdoim/.github)
+
+## .github
 Community Health Files for the `im-platform` organization.
 
 Each repository within this organization will inherit these default files unless the repository has defined their own.
